@@ -1,0 +1,77 @@
+# TPC
+# -*- coding: utf-8 -*-
+import random
+def jogo():
+#a--> jogador
+#b--> computador
+#inicio
+    n=21
+    i=float(input("Bem vindo ao jogo dos 21 fósforos. Para saber como jogar prima a 7, caso contrário prima a 8: "))
+    if i==7:
+        print("No inicio há um total de 21 fósforos. Em cada jogada cada jogador pode escolher retirar 1, 2, 3 ou 4 fósforos ao total. O jogador que retirar o último fósfoto perde")
+        print ("Vamos dar inicio ao jogo")
+    elif i==8:
+        print ("Vamos dar inicio ao jogo")
+    else:
+        print ("Opção inválida")
+#o jogador é o primeiro a jogar
+    j= float(input("Introduza 1 se quiser ser o primeiro a jogar ou 2 caso queira ser o segundo: "))
+    if(j==1):
+        while n!=1:
+            a = float(input("Introduza um número de 1 a 4: "))
+            if (a!=1 and a!=2 and a!=3 and a!=4):
+                print("Opção inválida")
+            else:
+                n=n-a
+                b=5-a
+                n=n-b
+                print ("O jogador retirou:", b)
+                print(n)
+        a=float(input("Introduza um número de 1 a 4: "))
+        print("O jogador 2 ganhou")
+#O computador é o primeiro a jogar
+    if j==2:
+        r=0
+        while r==0 and n>4:
+            b= random.randint(1,4)
+            print("O jogador retirou: ", b)
+            n=n-b
+            a = float(input("Introduza um número de 1 a 4: "))
+            n=n-a
+            print(n)
+            f=(a+b)
+            r=5-f
+        while r==0 and n!=0:
+            b= random.randint(1,n)
+            print("O jogador retirou: ", b)
+            n=n-b
+            f=(a+b)
+            r=5-f
+        if n==0:
+            print("O jogador 2 ganhou")
+        elif r>0:
+            b=5-f
+            print("O jogador retirou: ", b)
+            n=n-b
+        else:
+            b=10-f
+            print("O jogador retirou: ", b)
+            n=n-b       
+        while n!=1:
+            a = float(input("Introduza um número de 1 a 4: "))
+            if (a!=1 and a!=2 and a!=3 and a!=4):
+                print("Opção inválida")
+            else:
+                n=n-a
+                b=5-a
+                n=n-b
+                print ("O jogador retirou:", b)
+                print(n)
+        a=float(input("Introduza um número de 1 a 4: "))
+        print("O jogador 1 ganhou")
+    fim=int(input("Se quiser voltar a jogar escolha 5, se quiser fechar o jogo escolha 6: "))
+    if fim==5:
+        jogo()
+    elif fim==6:
+        print("Até á próxima")
+jogo()
